@@ -11,7 +11,17 @@ mole
 └── style.css
 ```
 
-## HTMLファイルの構造
+## HTMLとCSSファイルの構造
+
+|要素|役割|
+|:--|:--|
+|.score|モグラをクリックした時に加算されたスコアを表示|
+|button|スタートボタン|
+|.game|6つの穴ととモグラの要素を格納する親要素。|
+|.hole|穴の要素。flexプロパティで伸縮率などを設定している。疑似要素で背景画像を表示している|
+|.hole1 〜 .hole6|querySelectorAll()で要素がランダム取得できているか確認用|
+|.mole|モグラの画像表示用。top:100%が初期位置なので、hiddenで隠れている|
+|.hole.up .mole|jsでモグラを表示するために使用。.upをjsで付与することで、　top:0の位置になり表示される|
 
 
 ```html
@@ -45,16 +55,59 @@ mole
   </body>
 ```
 
+```css
+.game {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+}
+
+.hole:after {
+  display: block;
+  background: url(dirt.svg) bottom center no-repeat;
+  background-size: contain;
+  content: '';
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: url('mole.svg') bottom center no-repeat;
+  background-size: 60%;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s;
+}
+
+.hole.up .mole {
+  top: 0;
+}
+
+```
 
 ## プログラムの流れ
 
 
 1. Start!ボタンをクリック
-2. 10秒のカウント開始
+2. 10秒のカウント開始・Start！ボタンの非表示
 3. ランダムでどこか一つの穴からモグラを表示させ、1秒たったら非表示に
 4. モグラが表示されている間に、モグラをクリックしたらスコアを加算し表示
 5. 10秒のカウントが残っていれば 3に戻り実行
 6. 10秒のカウントが終了していれば 3の実行を終了しアラートで結果表示
+7. Start!ボタンを表示
 
 
 ## 使用するメソッドやプロパティ
@@ -85,3 +138,7 @@ mole
 これに関してはsetTimeout()の非同期関数の動作について確認する必要がありますので、下記のMDNを参考にしてください。
 
 [setTImeout - 非同期関数の動作](https://developer.mozilla.org/ja/docs/Web/API/setTimeout#%E9%9D%9E%E5%90%8C%E6%9C%9F%E9%96%A2%E6%95%B0%E3%81%AE%E5%8B%95%E4%BD%9C)
+
+## ゲーム要素の追加
+
+完成後はモグラの表示非表示時間をランダムに設定して難易度を高めたりするなど、ゲーム要素を自由に追加しましょう。
