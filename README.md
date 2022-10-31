@@ -24,5 +24,11 @@ mole
 
 |メソッド名|用途|
 |:--|:--|
-|querySelector|スコアやボタン要素取得|
-|
+|querySelector|スコア(.score)やボタン(button)要素取得|
+|querySelectorAll|穴(.hole)やモグラ(.mole)要素取得|
+|||
+|||
+|||
+|||
+|||
+|||
