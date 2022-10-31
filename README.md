@@ -8,7 +8,9 @@
 mole
 ├── index.html
 ├── script.js
-└── style.css
+├── style.css
+├── mole.svg
+└── dirt.svg
 ```
 
 `script.js`にプログラミングします。
@@ -27,7 +29,7 @@ mole
 |.hole|穴の要素。flexプロパティで伸縮率などを設定している。疑似要素で背景画像を表示している|
 |.hole1 〜 .hole6|querySelectorAll()で要素がランダム取得できているかjs確認用|
 |.mole|モグラの画像表示用。top:100%が初期位置なので、hiddenで隠れている|
-|.hole.up .mole|jsでモグラを表示するために使用。.upをjsで付与することで、　top:0の位置になり表示される|
+|.hole.up .mole|モグラを表示するために使用。.upをjsで付与することで、　top:0の位置になり表示される|
 
 
 ```html
